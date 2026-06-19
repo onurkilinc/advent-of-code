@@ -22,7 +22,7 @@ import numpy as np
 # 1- if not same sign (some positive some neg -> not safe)
 # 2- else if any number == 0, means no increase or decrease -> not safe
 # 3- else if any number >= 4 or <= -4 , means too much deviation 
-
+# 4- remove the item on the original array and also before/after + remove the first item and check all 4 corrections
 
 
 class Solution:
@@ -67,14 +67,38 @@ class Solution:
             if np.sign(u * w) == -1:
                 d = False
                 break
-        return d
+        return d,k
 
     def solution(self):
         T = len(self.data)
         n_safe = 0
         for i in range(T):
-            if self.safe(self.data[i]):
+               
+            if self.safe(self.data[i])[0]:
                 n_safe = n_safe + 1
+                print(i, "safe originally")
+            else:
+                kk = self.safe(self.data[i])[1]
+
+                # remove the item and check again also can try removing one before/after
+                correction = self.data[i][:kk] + self.data[i][kk+1:] 
+                if kk >= 1:
+                    correction2 = self.data[i][:kk-1] + self.data[i][kk:] 
+                else:
+                    correction2 = [0,0]
+                correction3 = self.data[i][:kk+1] + self.data[i][kk+2:] 
+                
+                # remove the first item for every array - as my code sometimes misses removing the first item I forced to check the edge case
+                correction4 = self.data[i][1:]
+                                    
+                if self.safe(correction)[0] or self.safe(correction2)[0] or self.safe(correction3)[0] or self.safe(correction4)[0]:
+                    n_safe = n_safe + 1
+                    print(i,kk, correction,correction2,correction3, n_safe)
+
+ 
+                    
+                    
+                    
         return n_safe
 
 
