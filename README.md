@@ -5,7 +5,7 @@ This repository contains my Python solution for [Advent of Code 2024, Day 2](htt
 ## Puzzle Summary
 The challenge involves analyzing reports consisting of sequences of levels to determine if they are "safe" based on specific trend rules.
 
-* **My Final Answer:** `269`
+* **My Answer:** Part 1 `269` and Part 2 `337`  
 
 ## Repository Structure
 * `solution.py`: The Python script containing the logic to parse the data and calculate the solution.
