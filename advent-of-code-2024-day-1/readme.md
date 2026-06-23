@@ -43,4 +43,4 @@ each round compares about half the current list, so it also looks like a geometr
 T(n) = n/2 + n/4 + n/8 + ... + 1  →  n × (1/2 + 1/4 + 1/8 + ...) = n
 ```
 
-every comparison eliminates one loser, so you always need exactly `n - 1` comparisons to leave one min — not the ~1.5n bound (that one is for finding min **and** max together).
+every comparison eliminates one loser, so you always need exactly `n - 1` comparisons to leave one min.
